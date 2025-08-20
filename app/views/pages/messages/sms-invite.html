@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iOS SMS Mock</title>
+  <style>
+    :root {
+      --bg:#f2f2f7;
+      --bubble:#e5e5ea;
+      --link:#007aff;
+      --text:#000;
+      --bar:#fbfbfd;
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    .status{
+      height:20px; padding:4px 8px; display:flex; align-items:center; justify-content:space-between; font-weight:600; background:#fcfcfe; font-size:12px;
+    }
+
+    .nav{height:44px; display:flex; align-items:center; gap:10px; padding:0 12px; background:var(--bar); border-bottom:1px solid #e5e7eb}
+    .back{display:flex; align-items:center; gap:6px; color:var(--link); font-size:16px; font-weight:500}
+    .chev{width:8px; height:8px; border-left:2px solid var(--link); border-bottom:2px solid var(--link); transform:rotate(45deg); margin-left:2px}
+    .avatar{width:32px; height:32px; background:#e5e7eb; border-radius:50%}
+    .title{display:flex; align-items:center; gap:6px}
+    .name{font-weight:600}
+
+    .chat{padding:8px 10px 70px;}
+    .timestamp{text-align:center; font-size:12px; color:#6b7280; margin:8px 0;}
+
+    .bubble{
+      max-width: 86%;
+      margin: 6px 0 10px 10px;
+      padding: 12px 14px;
+      background: var(--bubble);
+      border-radius: 18px 18px 18px 6px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.32;
+    }
+    .bubble p{margin:0 0 10px}
+    .bubble p:last-child{margin-bottom:0}
+    .bubble a{color:var(--link); text-decoration:none}
+
+    .field{
+      position:fixed; left:0; right:0; bottom:0; height:54px; background:var(--bar); border-top:1px solid #e5e7eb; display:flex; align-items:center; gap:8px; padding:8px;
+    }
+    .cam, .mic, .app{ width:30px; height:30px; background:#e5e7eb; border-radius:50%; display:grid; place-items:center; font-size:12px; color:#6b7280 }
+    .input{ flex:1; height:36px; background:#fff; border:1px solid #e5e7eb; border-radius:20px; padding:0 14px; display:flex; align-items:center; justify-content:space-between }
+    .input span{ color:#9ca3af; font-size:14px }
+    .send{ width:30px; height:30px; background:#007aff; border-radius:50%; display:grid; place-items:center; color:#fff; font-weight:700 }
+    .wrap{ word-break: break-word; overflow-wrap: anywhere; }
+  </style>
+</head>
+<body>
+  <div class="status">
+    <div>Provider</div>
+    <div>9:41 AM</div>
+    <div>100%</div>
+  </div>
+
+  <div class="nav">
+    <div class="back"><div class="chev"></div> Messages</div>
+    <div class="avatar"></div>
+    <div class="title"><div class="name">NHSscreen</div></div>
+  </div>
+
+  <div class="chat">
+    <div class="timestamp">Thu 17th Jul at 11:00</div>
+    <div class="bubble wrap">
+      <p><strong>Dear Sheena Patel,</strong></p>
+      <p>We are inviting you for your NHS breast screening appointment. We will invite you every 3 years from the age of 50 until you turn 71.</p>
+      <p><strong>Date:</strong> Wednesday 6 August 2025</p>
+      <p><strong>Time:</strong> 2:30pm</p>
+      <p><strong>Location:</strong> Sainsbury’s Superstore, 30 Mere Green Rd, Sutton Coldfield B75 5BT</p>
+      <p>Your appointment should take no longer than 30 minutes. Do not wear deodorant or talcum powder on the day of your appointment.</p>
+      <p>To change or cancel call <a href="#">0121 507 4967</a> or email <a href="#">swb-tr.cswbreastscreening@nhs.net</a>.</p>
+      <p>Contact us if you have:<br>
+      - mobility problems<br>
+      - a learning disability<br>
+      - breast implants<br>
+      - a pacemaker<br>
+      - had both breasts removed<br>
+      - had a mammogram in the last 6 months</p>
+      <p>For more information see: <a href="#">www.gov.uk/breast-screening-guide</a></p>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="cam">⋯</div>
+    <div class="input"><span>Text Message</span><div class="app">+</div></div>
+    <div class="mic">🎤</div>
+    <div class="send">↑</div>
+  </div>
+</body>
+</html>

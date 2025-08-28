@@ -56,7 +56,7 @@ console.log(request.session.data);
     })}}
 
     <div class="nhsuk-u-margin-bottom-7">
-      <p> Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, </p>
+      <p> Dear <span class="app-u-text-capitalize">{{ data['userFirstName']  + " " + data['linkedProfileLastName'] }}</span>, </p>
 
       <p>We are inviting you for your NHS breast screening appointment. We will invite you every 3 years from the age of 50 until you turn 71.</p>
 

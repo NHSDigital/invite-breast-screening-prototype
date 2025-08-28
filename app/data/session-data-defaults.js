@@ -7,12 +7,12 @@ module.exports = {
 
   // Set linked profile details
   "linkedProfileFirstName": "Toby",
-  "linkedProfileLastName": "Day",
+  "linkedProfileLastName": "Patel",
   "linkedProfileAge": "83",
 
   // Set user details
-  "userFirstName": "mary",
-  "userLastName": "swanson",
+  "userFirstName": "Sheena",
+  "userLastName": "Patel",
   "nhsNumber": "123 456 7890",
   "dob": "15 March 1984",
 

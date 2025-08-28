@@ -1,5 +1,12 @@
 module.exports = (config) => (req, res, next) => {
-  res.locals.serviceName = config.serviceName;
+
+  const locals = {
+    serviceName: config.serviceName,
+    query: req.query,
+  }
+
+  // Assign all local variables at once
+  Object.assign(res.locals, locals)
 
   next();
 };

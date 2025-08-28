@@ -17,7 +17,7 @@ router.use((req, res, next) => {
 
 // Shows in the terminal what page we're on and what the previous page was
 router.use('/', (req, res, next) => {
-        res.locals.currentURL = req.originalUrl; 
+        res.locals.currentURL = req.originalUrl;
         res.locals.prevUrl = req.get('Referrer');
 
     console.log('folder : ' + res.locals.folder + ',subfolder : ' + res.locals.subfolder  );
@@ -197,25 +197,25 @@ router.post('/pages/services/gp-appointment-invite-answer', function (req, res) 
   }
 })
 
-// Adding "query" to every page. There could be a better implementaion using middleware. 
-// in nunjkucks you can call {{query[key]}}
+// // Adding "query" to every page. There could be a better implementaion using middleware.
+// // in nunjkucks you can call {{query[key]}}
 
-router.get('*', function(req, res) {
-    let path = req.params[0]
-    let pathEnd = path.slice(-1)
-    let newPath = path.substring(1)
-    if (path == "/") {
-      // Top home page
-      path = "index"
-    } else if (pathEnd == "/") {
-      // Check if this is the route folder, if so, then render the index page.
-      path = newPath + "index"
-    } else {
-      path = newPath
-    }
-    res.render(path, {
-      "query": req.query,
-    });
-  })
+// router.get('*', function(req, res) {
+//     let path = req.params[0]
+//     let pathEnd = path.slice(-1)
+//     let newPath = path.substring(1)
+//     if (path == "/") {
+//       // Top home page
+//       path = "index"
+//     } else if (pathEnd == "/") {
+//       // Check if this is the route folder, if so, then render the index page.
+//       path = newPath + "index"
+//     } else {
+//       path = newPath
+//     }
+//     res.render(path, {
+//       "query": req.query,
+//     });
+//   })
 
 module.exports = router;

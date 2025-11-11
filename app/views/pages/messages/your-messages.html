@@ -168,7 +168,7 @@ console.log(request.session.data);
         {% endif %}
 
         {% if "Unread" in data['message-status'] and data['message2read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message2read'] === "true" %}
-        {% if "Range Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+        {% if "NHS SCREENING" in data['message-sender'] or data['message-sender'] == "" %}
 
         {% if is2Removed %}
         {% else %}
@@ -182,8 +182,8 @@ console.log(request.session.data);
                     {{ tagToUse2.nhsappTag.text }}
                   </span>
                 {% endif %}
-                <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
-                  Thursday
+                <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
+                  12:32pm
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
@@ -192,26 +192,23 @@ console.log(request.session.data);
                 <input type="hidden" name="message2read" value="true">
                 <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
                 {% endif %}
-                {% if data['replySent'] === "true" %}
-                <input type="hidden" name="replySentFocus" value="flase">
-                {% endif %}
                 <a href="#2" onclick="document.getElementById('message2').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
                   {% if data['message2read'] === "true" %}
                   <span class="nhsuk-u-visually-hidden">Read message from </span>
-                    Range surgery
+                  NHS SCREENING
                   {% else %}
                     <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
                       <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
                       <span class="nhsuk-u-visually-hidden">Unread message from </span>
-                    </span>Range survey
+                    </span> NHS SCREENING
                   {% endif %}
-                  <span class="nhsuk-u-visually-hidden"> received on Thursday at 2:45pm </span> 
+                  <span class="nhsuk-u-visually-hidden"> received today at 12:32pm</span> 
                 </a>
               </form>
               <div class="nhsapp-card__below">
                 <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
                   <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                  Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, we would like to ask you a few questions about smoking. 
+                  Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, we are inviting you for your NHS breast screening appointment. 
                 </p>
               </div>
             </div>
@@ -221,8 +218,8 @@ console.log(request.session.data);
         {% endif %}
         {% endif %}
 
-        {% if "Read" in data['message-status'] or data['message-status'] == "" %}
-        {% if "Hughenden Valley Surgery" in data['message-sender'] or data['message-sender'] == "" %}
+        {% if "Unread" in data['message-status'] and data['message3read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message3read'] === "true" %}
+        {% if "NHS SCREENING" in data['message-sender'] or data['message-sender'] == "" %}
 
         {% if is3Removed %}
         {% else %}
@@ -236,19 +233,33 @@ console.log(request.session.data);
                     {{ tagToUse3.nhsappTag.text }}
                   </span>
                 {% endif %}
-                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
-                  4 Oct 2023
+                <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message3read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
+                  12:02pm
                 </span>
               </div>
-              <a class="nhsapp-card__link nhsuk-link--no-visited-state" href="/pages/messages/message-3">
-                <span class="nhsuk-u-visually-hidden">Read message from </span>
-                Hughenden Valley Surgery
-                <span class="nhsuk-u-visually-hidden"> received 4 October 2023 at 6:30pm</span> 
-              </a>
+              <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
+              <form id="message3" method="post" action="/pages/messages/message-3">
+                {% if data['message3read'] === "false" %}
+                <input type="hidden" name="message3read" value="true">
+                <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
+                {% endif %}
+                <a href="#3" onclick="document.getElementById('message3').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
+                  {% if data['message3read'] === "true" %}
+                  <span class="nhsuk-u-visually-hidden">Read message from </span>
+                  NHS SCREENING
+                  {% else %}
+                    <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
+                      <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
+                      <span class="nhsuk-u-visually-hidden">Unread message from </span>
+                    </span> NHS SCREENING
+                  {% endif %}
+                  <span class="nhsuk-u-visually-hidden"> received today at 12:02pm</span> 
+                </a>
+              </form>
               <div class="nhsapp-card__below">
-                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message3read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
                   <span class="nhsuk-u-visually-hidden"> with preview message of </span>
-                  Reminder of your telephone appointment with your GP on Friday 23 October at 1:30pm.
+                  Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, we are inviting you for your NHS breast screening appointment. 
                 </p>
               </div>
             </div>

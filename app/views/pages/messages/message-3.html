@@ -7,8 +7,8 @@ console.log(request.session.data);
 {% set backLink = true %}
 {% set backLinkURL = "/pages/messages/your-messages" %}
 
-{% set pageHeading = "Hughenden Valley Surgery" %}
-{% set pageDescription = "Received 4 October 2023 at 6:30pm" %}
+{% set pageHeading = "NHS SCREENING" %}
+{% set pageDescription = "Sent 16 July 2025 at 12:02pm" %}
 
 {% block content %}
 
@@ -43,53 +43,126 @@ console.log(request.session.data);
   </td>
 </tr>
 
-  <div class="nhsuk-grid-row">
-    <div class="nhsuk-grid-column-two-thirds">
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
 
-      <!-- DYNAMIC PAGE TITLE -->
-      {{ dynamicPageTitle({
-        title: pageHeading,
-        titleSmall: true,
-        titleHiddenTextBefore: "Message from",
-        description: pageDescription,
-        descriptionMuted: true
-      })}}
+    <!-- DYNAMIC PAGE TITLE -->
+    {{ dynamicPageTitle({
+      title: pageHeading,
+      titleSmall: true,
+      titleHiddenTextBefore: "Message from",
+      description: pageDescription,
+      descriptionMuted: true
+    })}}
 
-      <div class="nhsuk-u-margin-bottom-7">
-        <p>Reminder of your telephone appointment with your GP on Friday 23 October at 1:30pm.</p>
-      </div>
+    <div class="nhsuk-u-margin-bottom-7">
+      <p> Dear <span class="app-u-text-capitalize">{{ data['userFirstName']  + " " + data['linkedProfileLastName'] }}</span>, </p>
 
-      <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+      <p>We are inviting you for your NHS breast screening appointment. We will invite you every 3 years from the age of 50 until you are 71.</p>
 
-      {% if is3Flagged and is3Removed %}
-        <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
-          Restore message
-        </a>
-      {% elif is3Flagged %}
-        <form id="unflag-form3" action="/unflag3" method="POST" style="display: none;"></form>
-        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form3').submit(); return false;">
-          Unflag message
-        </a>
-        <div class="nhsuk-u-padding-bottom-5"></div>
-        <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
-          Remove message
-        </a>
-      {% elif is3Removed %}
-        <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
-          Restore message
-        </a>
-      {% else %}
-        <form id="flag-form3" action="/flag3" method="POST" style="display: none;"></form>
-        <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form3').submit(); return false;">
-          Flag message
-        </a>
-        <div class="nhsuk-u-padding-bottom-5"></div>
-        <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
-          Remove message
-        </a>
-      {% endif %}
+      <h3>Your appointment</h3>
+      <p><strong>Date:</strong> Wednesday 24 December 2025<br>
+         <strong>Time:</strong> 2:30pm<br>
+         <strong>Location:</strong>  Mobile breast screening van</p> 
+         <p>Sainsbury's Superstore</p> 
+         <p>30 Mere Green Rd</p> 
+         <p>Sutton Coldfield</p> 
+         <p>B75 5BT</p>
 
-    </div>
+      <p>Go to the corner of the carpark behind the petrol station.</p>
+
+         <a href="https://maps.app.goo.gl/7TNjirFvwkzhKNFV8" target="_blank" rel="noopener noreferrer">
+          Get directions (opens in Google Maps)</a>
+      </p>
+      <p>Your appointment should take no longer than 30 minutes.</p>
+
+      <h3>Changing your appointment</h3>
+      <p>If you need to change or cancel your appointment, call us on <a href="tel:01215074967">0121 507 4967</a> or email <a href="mailto:swb-tr.cswbreastscreening@nhs.net">swb-tr.cswbreastscreening@nhs.net</a>.</p>
+
+      <h3>What we need to know</h3>
+      <p>It's important to contact us on <a href="tel:01215074967">0121 507 4967</a> or email <a href="mailto:swb-tr.cswbreastscreening@nhs.net">swb-tr.cswbreastscreening@nhs.net</a> if you:</p>
+      <ul>
+        <li>have breast implants</li>
+        <li>have a pacemaker or other implanted medical device</li>
+        <li>have had both breasts removed </li>
+        <li>have had a breast X-ray (mammogram) in the last 6 months</li>
+        <li>are under the care of a breast consultant</li>
+        <li>are having annual mammograms following breast cancer treatment</li>
+        <li>are pregnant or breastfeeding</li>
+      </ul>
+      <p>You should also contact us on the number or email address above if you need extra support, for example if you:</p>
+      <ul>
+        <li>have mobility problems</li>
+        <li>have a learning disability</li>
+        <li>need information in another format or language</li>
+      </ul>
+
+      <h3>How to prepare</h3>
+      <ul>
+        <li>Do not wear deodorant or talcum powder on the day of your appointment.</li>
+        <li>Wear clothes that will make it easy for you to undress above your waist.</li>
+        <li>Remove necklaces and nipple piercings.</li>
+      </ul>
+      <p>You can bring someone with you for support, such as a friend, relative or carer. They will usually need to stay in the waiting room, or outside the mobile unit, during your appointment.</p>
+
+      <h3>What breast screening is for</h3>
+      <p>Breast screening can find signs of breast cancer at an early stage. We look for cancers that are too small for you to feel or see. Finding breast cancer early means that treatment is more likely to be effective.</p>
+
+      <h3>What happens at your appointment</h3>
+      <p>You will have X-rays of your breasts taken. These are called mammograms. A specialist called a mammographer will take your mammograms. They will explain what will happen at each stage and you will be able to ask questions. The mammographer will be female.</p>
+      <p>You will have 2 mammograms taken for each breast.</p>
+      <ol>
+        <li>You will need to undress above your waist. You will have a private changing area.</li>
+        <li>The mammographer will help to place one of your breasts in the right position on the X-ray machine. They will need to touch your breast.</li>
+        <li>The machine will squeeze your breast to hold it in place for each mammogram. You will need to keep still. Some women find this uncomfortable or painful but the squeezing only lasts a few seconds. You can ask to stop at any time.</li>
+        <li>The mammographer will take the first mammogram and then move the machine to take a second mammogram of the same breast.</li>
+        <li>They will repeat this process with your other breast.</li>
+      </ol>
+
+      <h3>More information</h3>
+<p>
+  Read 
+  <a href="https://www.gov.uk/government/publications/breast-screening-helping-women-decide" 
+     target="_blank" 
+     rel="noopener noreferrer">
+    Your guide to NHS breast screening
+  </a> 
+  on GOV.UK. This guide is available in different languages and formats.
+</p>
+</div>
+
+
+    <hr class="nhsuk-section-break nhsuk-section-break--m nhsuk-section-break--visible app-section-break--width-2">
+
+    {% if is3Flagged and is3Removed %}
+      <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
+        Restore message
+      </a>
+    {% elif is3Flagged %}
+      <form id="unflag-form3" action="/unflag3" method="POST" style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('unflag-form3').submit(); return false;">
+        Unflag message
+      </a>
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
+        Remove message
+      </a>
+    {% elif is3Removed %}
+      <a href="/pages/messages/message-3-restore" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('restore-message3').submit(); return false;">
+        Restore message
+      </a>
+    {% else %}
+      <form id="flag-form3" action="/flag3" method="POST" style="display: none;"></form>
+      <a href="#" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('flag-form3').submit(); return false;">
+        Flag message
+      </a>
+      <div class="nhsuk-u-padding-bottom-5"></div>
+      <a href="/pages/messages/message-3-remove" class="nhsuk-link nhsuk-link--no-visited-state" onclick="document.getElementById('remove-message3').submit(); return false;">
+        Remove message
+      </a>
+    {% endif %}
+
   </div>
+</div>
 
-  {% endblock %}
+{% endblock %}

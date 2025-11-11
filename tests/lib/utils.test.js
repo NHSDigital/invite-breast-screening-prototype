@@ -5,6 +5,9 @@ jest.mock('../../lib/core_filters');
 const customFilters = require('../../app/filters');
 jest.mock('../../app/filters');
 
+// Import session data defaults to use in tests
+const sessionDataDefaults = require('../../app/data/session-data-defaults');
+
 test('test addNunjucksFilters filter added', () => {
     coreFilters.mockImplementation(() => {return {1: "core-filter"};});
     customFilters.mockImplementation(() => {return {2: "custom-filter"};});
@@ -138,7 +141,10 @@ test('autoStoreData with request session data not set', () => {
 
     autoStoreData(mockRequest, mockResponse, mockNext);
 
-    expect(mockResponse.locals.data).toStrictEqual({1:{2:"two"}});
+    // Check that the specific data is present
+    expect(mockResponse.locals.data[1]).toStrictEqual({2:"two"});
+    // Check that default session data is also present
+    expect(mockResponse.locals.data).toMatchObject(sessionDataDefaults);
 });
 
 test('autoStoreData with unchecked in the request', () => {
@@ -162,5 +168,10 @@ test('autoStoreData with unchecked in the request', () => {
 
     autoStoreData(mockRequest, mockResponse, mockNext);
 
-    expect(mockResponse.locals.data).toStrictEqual({2: ["one", "three",],});
+    // Check that the specific data is present (unchecked values should be removed)
+    expect(mockResponse.locals.data[2]).toStrictEqual(["one", "three"]);
+    // Check that the unchecked value was removed
+    expect(mockResponse.locals.data[1]).toBeUndefined();
+    // Check that default session data is also present
+    expect(mockResponse.locals.data).toMatchObject(sessionDataDefaults);
 });

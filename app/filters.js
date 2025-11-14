@@ -33,7 +33,7 @@ module.exports = function (env) { /* eslint-disable-line func-names,no-unused-va
   ------------------------------------------------------------------ */
 
   // Get time one hour ago, formatted as "12:23pm"
-  filters.timeOneHourAgo = function() {
+  filters.timeOneHourAgo = function () { /* eslint-disable-line func-names */
     const now = new Date();
     const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
     const hours = oneHourAgo.getHours();
@@ -45,7 +45,7 @@ module.exports = function (env) { /* eslint-disable-line func-names,no-unused-va
   };
 
   // Get yesterday's day name (e.g., "Thursday")
-  filters.yesterdayDayName = function() {
+  filters.yesterdayDayName = function () { /* eslint-disable-line func-names */
     const now = new Date();
     const yesterday = new Date(now);
     yesterday.setDate(yesterday.getDate() - 1);
@@ -54,7 +54,7 @@ module.exports = function (env) { /* eslint-disable-line func-names,no-unused-va
   };
 
   // Get the day before yesterday's day name (e.g., "Wednesday")
-  filters.dayBeforeYesterdayName = function() {
+  filters.dayBeforeYesterdayName = function () { /* eslint-disable-line func-names */
     const now = new Date();
     const twoDaysAgo = new Date(now);
     twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);

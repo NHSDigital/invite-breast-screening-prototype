@@ -114,6 +114,10 @@ console.log(request.session.data);
 
       {% else %}
 
+      {% set timeOneHourAgo = "" | timeOneHourAgo %}
+      {% set yesterdayDay = "" | yesterdayDayName %}
+      {% set dayBeforeYesterday = "" | dayBeforeYesterdayName %}
+
       <ul class="nhsapp-cards nhsapp-cards--stacked">
 
         {% if "Unread" in data['message-status'] and data['message1read'] === "false" or data['message-status'] == "" or "Read" in data['message-status'] and data['message1read'] === "true" %}
@@ -132,7 +136,7 @@ console.log(request.session.data);
                   </span>
                 {% endif %}
                 <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message1read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
-                  1:02pm
+                  {{ timeOneHourAgo }}
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
@@ -151,7 +155,7 @@ console.log(request.session.data);
                       <span class="nhsuk-u-visually-hidden">Unread message from </span>
                     </span> NHS SCREENING
                   {% endif %}
-                  <span class="nhsuk-u-visually-hidden"> received today at 1:02pm</span> 
+                  <span class="nhsuk-u-visually-hidden"> received today at {{ timeOneHourAgo }}</span> 
                 </a>
               </form>
               <div class="nhsapp-card__below">
@@ -183,7 +187,7 @@ console.log(request.session.data);
                   </span>
                 {% endif %}
                 <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message2read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
-                  12:32pm
+                  {{ yesterdayDay }}
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
@@ -202,7 +206,7 @@ console.log(request.session.data);
                       <span class="nhsuk-u-visually-hidden">Unread message from </span>
                     </span> NHS SCREENING
                   {% endif %}
-                  <span class="nhsuk-u-visually-hidden"> received today at 12:32pm</span> 
+                  <span class="nhsuk-u-visually-hidden"> received {{ yesterdayDay }} at {{ timeOneHourAgo }}</span> 
                 </a>
               </form>
               <div class="nhsapp-card__below">
@@ -233,8 +237,8 @@ console.log(request.session.data);
                     {{ tagToUse3.nhsappTag.text }}
                   </span>
                 {% endif %}
-                <span aria-hidden="true" class="nhsuk-u-display-block {% if data['message3read'] === 'true' %}nhsuk-u-secondary-text-color {% else %}nhsuk-u-font-weight-bold{% endif %}">
-                  12:02pm
+                <span aria-hidden="true" class="nhsuk-u-display-block nhsuk-u-secondary-text-color">
+                  {{ dayBeforeYesterday }}
                 </span>
               </div>
               <!-- FORM AND HIDDEN INPUT ONLY USED FOR PROTOTYPING PURPOSES TO PASS DATA -->
@@ -244,20 +248,13 @@ console.log(request.session.data);
                 <input type="hidden" name="messages" value="{{ data['messages'] - 1 }}">
                 {% endif %}
                 <a href="#3" onclick="document.getElementById('message3').submit();" class="nhsapp-card__link nhsuk-link--no-visited-state">
-                  {% if data['message3read'] === "true" %}
                   <span class="nhsuk-u-visually-hidden">Read message from </span>
                   NHS SCREENING
-                  {% else %}
-                    <span class="nhsapp-badge-small nhsapp-badge-small--absolute">
-                      <span class="nhsapp-badge-small__indicator" aria-hidden="true"></span>
-                      <span class="nhsuk-u-visually-hidden">Unread message from </span>
-                    </span> NHS SCREENING
-                  {% endif %}
-                  <span class="nhsuk-u-visually-hidden"> received today at 12:02pm</span> 
+                  <span class="nhsuk-u-visually-hidden"> received {{ dayBeforeYesterday }} at {{ timeOneHourAgo }}</span> 
                 </a>
               </form>
               <div class="nhsapp-card__below">
-                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines {% if data['message3read'] === 'true' %}nhsuk-u-secondary-text-color{% endif %}">
+                <p class="nhsuk-u-margin-top-2 nhsapp-u-truncate-two-lines nhsuk-u-secondary-text-color">
                   <span class="nhsuk-u-visually-hidden"> with preview message of </span>
                   Dear <span class="app-u-text-capitalize">{{ data['userFirstName'] }}</span>, we are inviting you for your NHS breast screening appointment. 
                 </p>

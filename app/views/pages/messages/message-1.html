@@ -8,7 +8,8 @@ console.log(request.session.data);
 {% set backLinkURL = "/pages/messages/your-messages" %}
 
 {% set pageHeading = "NHS SCREENING" %}
-{% set pageDescription = "Sent 16 July 2025 at 1:02pm" %}
+{% set timeOneHourAgo = "" | timeOneHourAgo %}
+{% set pageDescription = "Received today at " + timeOneHourAgo %}
 
 {% block content %}
 
